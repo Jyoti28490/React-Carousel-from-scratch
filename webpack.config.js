@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 
+
 module.exports = {
   entry: "./src/index.js",
   mode: "development",
@@ -9,12 +10,20 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
-        loader: "babel-loader",
-        options: { presets: ["@babel/env"] }
+        loader: require.resolve('babel-loader'),
+        options: { 
+          cacheDirectory: true,
+          plugins:['react-hot-loader/babel'],
+          presets: ["@babel/env"] }
       },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
+      },
+
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ["file-loader"]
       }
     ]
   },
