@@ -6,7 +6,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --hot --open",
-    "build": "webpack"
+    "build": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
